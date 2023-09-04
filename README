@@ -1,11 +1,43 @@
-Application structure
+<h1 align="center">
+  My First Go API
+</h1>
 
-- `configs` is for modularizing project configuration files
+<p align="center">
+  <a href="#💻-project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#🚀-tecnologies">Tecnologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#🔧-building">Building</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#📝-licença">Licença</a>
+</p>
 
-- `controllers` is for modularizing application logics.
+<br>
 
-- `models` is for modularizing data and database logics.
+## 💻 Project
 
-- `responses` is for modularizing files describing the response we want our API to give.
+This project was made during my first study of GO
 
-- `routes` is for modularizing URL pattern and handler information.
+
+## 🚀 Tecnologies
+
+The following technologies have been used:
+
+- 💻 GO
+
+- 🚄 Fiber Framework
+
+- 📦 MongoDB
+
+- 📗 Swag (Swagger)
+
+
+## 🔧 Building
+
+You will need golang version 1.21 or higher and follow the steps below.
+
+```bash
+$ git clone https://github.com/wesleylimabh/fiber-mongo-api.git
+$ cd fiber-mongo-api
+$ go run main.go // or user makefile
+```
+
+<br/>
+
