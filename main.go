@@ -8,13 +8,16 @@ import (
 )
 
 func main() {
-	app := fiber.New()
+	app := fiber.New(fiber.Config{
+		EnablePrintRoutes: true,
+	})
 
 	// run database
 	configs.ConnectDB()
 
 	// routes
 	routes.UserRoute(app)
+	routes.SwaggerRoute(app)
 
 	app.Listen(":3000")
 

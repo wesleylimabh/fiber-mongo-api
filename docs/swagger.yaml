@@ -1,0 +1,233 @@
+basePath: /
+definitions:
+  models.User:
+    properties:
+      id:
+        type: string
+      location:
+        type: string
+      name:
+        type: string
+      title:
+        type: string
+    required:
+    - location
+    - name
+    - title
+    type: object
+  responses.UserResponse:
+    properties:
+      data:
+        additionalProperties: true
+        type: object
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+externalDocs:
+  description: OpenAPI
+  url: https://swagger.io/resources/open-api/
+host: localhost:3000
+info:
+  contact:
+    email: email@email.com
+    name: Wesley Lima
+    url: https://github.com/wesleylimabh
+  description: This is a simple CRUD made with GO, Fiber Frameword and MongoDB.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Fiber MongoDB Api
+  version: "1.0"
+paths:
+  /users:
+    post:
+      consumes:
+      - application/json
+      description: Create a informed user in database
+      parameters:
+      - description: ' '
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/responses.UserResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.User'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+      summary: Create a user
+      tags:
+      - users
+  /users/:
+    get:
+      consumes:
+      - application/json
+      description: List all of users
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              allOf:
+              - $ref: '#/definitions/responses.UserResponse'
+              - properties:
+                  data:
+                    items:
+                      $ref: '#/definitions/models.User'
+                    type: array
+                type: object
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+      summary: List users
+      tags:
+      - users
+  /users/{userId}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a user data
+      parameters:
+      - description: User ID
+        in: path
+        name: userId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+      summary: Delete a user
+      tags:
+      - users
+    get:
+      consumes:
+      - application/json
+      description: Find a user by userId
+      parameters:
+      - description: User ID
+        in: path
+        name: userId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/responses.UserResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.User'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+      summary: Get a user
+      tags:
+      - users
+    put:
+      consumes:
+      - application/json
+      description: Edit user data
+      parameters:
+      - description: User ID
+        in: path
+        name: userId
+        required: true
+        type: string
+      - description: ' '
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/responses.UserResponse'
+            - properties:
+                data:
+                  $ref: '#/definitions/models.User'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.UserResponse'
+      summary: Edit a user
+      tags:
+      - users
+swagger: "2.0"
